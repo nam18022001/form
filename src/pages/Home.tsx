@@ -1,30 +1,23 @@
-import { Fragment, useEffect } from 'react';
-import './css.css';
-import { useAuthContext } from '~/contexts/AuthContextProvider';
-import { addForm } from '~/services/formService';
-import { useLoadingContext } from '~/contexts/LoadingContextProvider';
-import { child, get, getDatabase, ref } from 'firebase/database';
-import { toastError, toastSuccess } from '~/hooks/useToast';
+import { doc, getDoc } from 'firebase/firestore';
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import config from '~/configs';
+import { formDataContent } from '~/configs/const';
+import { db } from '~/configs/database';
+import { useAuthContext } from '~/contexts/AuthContextProvider';
+import { useLoadingContext } from '~/contexts/LoadingContextProvider';
+import { toastError, toastSuccess } from '~/hooks/useToast';
+import { addForm } from '~/services/formService';
+import './css.css';
 
 function Home() {
   const { currentUser } = useAuthContext();
   const { setLoading } = useLoadingContext();
 
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-
-  //   script.src = './script.js';
-  //   script.async = true;
-
-  //   document.body.appendChild(script);
-  // }, []);
-
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);
-    const formData = {
+    const formData: formDataContent = {
       so: event.target.so.value,
       timeout: event.target.timeout.value,
       bksx: event.target.bksx.value,
@@ -63,9 +56,10 @@ function Home() {
       tgdhl2: event.target.tgdhl2.value,
       xncnxh: event.target.xncnxh.value,
       xncndh: event.target.xncndh.value,
+      startDate: Date.now(),
     };
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `forms/${event.target.so.value}`)).then((snapshot) => {
+    const dbRef = doc(db, 'forms', event.target.so.value);
+    getDoc(dbRef).then((snapshot) => {
       if (!snapshot.exists()) {
         addForm(formData).then((_) => {
           setLoading(false);
