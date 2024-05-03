@@ -101,6 +101,7 @@ function Home() {
           event.target.tgdhl2.value = '';
           event.target.xncnxh.value = '';
           event.target.xncndh.value = '';
+          event.target.check.checked = false;
           toastSuccess('Gửi biểu mẫu thành công');
         });
       } else {
@@ -660,7 +661,13 @@ function Home() {
             <div className="formbold-checkbox-wrapper">
               <label htmlFor="supportCheckbox" className="formbold-checkbox-label">
                 <div className="formbold-relative">
-                  <input type="checkbox" id="supportCheckbox" className="formbold-input-checkbox" required />
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="supportCheckbox"
+                    className="formbold-input-checkbox"
+                    required
+                  />
                   <div className="formbold-checkbox-inner">
                     <span className="formbold-opacity-0">
                       <svg

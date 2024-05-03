@@ -13,6 +13,7 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
     "firebase": "^10.11.1",
     "jquery": "^3.7.1",
     "react": "^18.2.0",
@@ -22,6 +23,7 @@
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/jquery": "^3.5.29",
     "@types/node": "^20.8.8",
     "@types/react": "^18.2.15",

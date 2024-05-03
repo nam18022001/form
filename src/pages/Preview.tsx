@@ -1,12 +1,23 @@
+import { useEffect } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
 function Preview() {
+  const nav = useNavigate();
+  const { idProfile } = useParams();
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (idProfile === 'null' && Object.keys(state).length === 0) {
+      nav(-1);
+    }
+  }, [idProfile, state]);
   const handlePrint = () => {
     window.print();
   };
   return (
     <Fragment>
-      <button className="bg-slate-500 z-[999] absolute top-0 left-0" onClick={handlePrint}>
+      <button className="bg-slate-500 z-[999] absolute top-0 left-0 button-print" onClick={handlePrint}>
         Pirnt
       </button>
       <div id="sidebar">
@@ -25,11 +36,11 @@ function Preview() {
                 GIẤY VẬN T<span className="_ _0"></span>ẢI<span className="ff2"> </span>
               </div>
               <div className="t m0 x2 h3 y3 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số: 2131231231244. Có giá tr<span className="_ _0"></span>ị đến…..<span className="ff4"> </span>
+                Số: {state.so ? state.so : ' '} Có giá tr<span className="_ _0"></span>ị đến &nbsp;
+                {state.timeout ? state.timeout : '………'}.<span className="ff4"> </span>
               </div>
               <div className="t m0 x3 h3 y4 ff3 fs0 fc0 sc0 ls0 ws1">
-                Biển kiểm<span className="_ _0"></span> soát xe:……………………………<span className="_ _0"></span>….
-                <span className="ff4"></span>
+                Biển kiểm<span className="_ _0"></span> soát xe: {state.bksx ? state.bksx : '……………………………'}
               </div>
             </div>
             <div className="c x3 y5 w3 h4">
@@ -45,36 +56,42 @@ function Preview() {
               </div>
             </div>
             <div className="c x3 y7 w3 h4">
-              <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Đơn vị vận tải: <span className="_ _0"></span>
+              <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1 ">
+                Đơn vị vận tải: {state.dvvt ? state.dvvt : ''}
+                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 y7 w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Họ tên lái xe:<span className="ff4"> </span>
+                Họ tên lái xe: {state.htlx ? state.htlx : ''}
+                <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 y9 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Địa chỉ: <span className="ff4"> </span>
+                Địa chỉ: {state.dcdvvt ? state.dcdvvt : ''}
+                <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 y9 w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Giấy phép lái xe số: <span className="_ _0"></span>
+                Giấy phép lái xe số: {state.gplx ? state.gplx : ''}
+                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 ya w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số điện thoại liên hệ:<span className="_ _0"></span>
+                Số điện thoại liên hệ: {state.sdtdvvt ? state.sdtdvvt : ''}
+                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ya w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số điện thoại liên hệ:<span className="_ _0"></span>
+                Số điện thoại liên hệ: {state.sdtlx ? state.sdtlx : ''}
+                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -100,18 +117,21 @@ function Preview() {
             </div>
             <div className="c x3 ye w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tên người thuê <span className="_ _0"></span>vận chuyển: <span className="ff4"> </span>
+                Tên người thuê <span className="_ _0"></span>vận chuyển: {state.tntvc ? state.tntvc : ''}
+                <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ye w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số hợp đồng:<span className="_ _0"></span>
+                Số hợp đồng: {state.shd ? state.shd : ''}
+                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 yf w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Địa chỉ: <span className="ff4"> </span>
+                Địa chỉ: {state.dcntvc ? state.dcntvc : ''}
+                <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 yf w4 h4">
@@ -329,12 +349,12 @@ function Preview() {
               </div>
               <div className="t m0 xa h6 y6 ff2 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
-            <div className="c x0 y1 w2 h0">
+            <div className="c x0 y1 w2 h0 ">
               <div className="t m0 x3 hd y2b ff5 fs0 fc0 sc0 ls0 ws1">
                 Ghi chú: Tùy theo yêu c<span className="_ _0"></span>ầu quản lý, Đơn vị vậ<span className="_ _0"></span>
                 n tải có thể bổ sung các<span className="_ _0"></span> thông tin <span className="_ _0"></span>
                 <span className="ff6">
-                  khác ngo<span className="_ _0"></span>ài các thông tin{' '}
+                  khác ngo<span className="_ _0"></span>ài các thông tin
                 </span>
               </div>
               <div className="t m0 x3 hd y2c ff5 fs0 fc0 sc0 ls0 ws1">

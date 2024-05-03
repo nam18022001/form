@@ -79,7 +79,8 @@
   [data-page-no='2'] + .pf {
     overflow: hidden;
   }
-  .d {
+  .d,
+  .button-print {
     display: none;
   }
 }
@@ -356,7 +357,7 @@
     format('woff');
 }
 .ff4 {
-  font-family: ff4;
+  /* font-family: ff4; */
   line-height: 1.089;
   font-style: normal;
   font-weight: normal;
