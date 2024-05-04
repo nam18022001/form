@@ -33,32 +33,31 @@ function Preview() {
             />
             <div className="c x0 y1 w2 h0">
               <div className="t m0 x1 h2 y2 ff1 fs0 fc0 sc0 ls0 ws1">
-                GIẤY VẬN T<span className="_ _0"></span>ẢI<span className="ff2"> </span>
+                GIẤY VẬN TẢI<span className="ff2"> </span>
               </div>
               <div className="t m0 x2 h3 y3 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số: {state.so ? state.so : ' '} Có giá tr<span className="_ _0"></span>ị đến &nbsp;
+                Số: {state.so ? state.so : ' '} Có giá trị đến &nbsp;
                 {state.timeout ? state.timeout : '………'}.<span className="ff4"> </span>
               </div>
               <div className="t m0 x3 h3 y4 ff3 fs0 fc0 sc0 ls0 ws1">
-                Biển kiểm<span className="_ _0"></span> soát xe: {state.bksx ? state.bksx : '……………………………'}
+                Biển kiểm soát xe: {state.bksx ? state.bksx : '……………………………'}
               </div>
             </div>
             <div className="c x3 y5 w3 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                1. Thông tin v<span className="_ _0"></span>ề đơn vị kinh doanh<span className="_ _0"></span>
+                1. Thông tin về đơn vị kinh doanh
                 <span className="ff2"> </span>
               </div>
             </div>
             <div className="c x4 y5 w4 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                2. Thông tin v<span className="_ _0"></span>ề người lái xe<span className="_ _0"></span>
+                2. Thông tin về người lái xe
                 <span className="ff2"> </span>
               </div>
             </div>
             <div className="c x3 y7 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1 ">
                 Đơn vị vận tải: {state.dvvt ? state.dvvt : ''}
-                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -77,54 +76,48 @@ function Preview() {
             <div className="c x4 y9 w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
                 Giấy phép lái xe số: {state.gplx ? state.gplx : ''}
-                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 ya w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
                 Số điện thoại liên hệ: {state.sdtdvvt ? state.sdtdvvt : ''}
-                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ya w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
                 Số điện thoại liên hệ: {state.sdtlx ? state.sdtlx : ''}
-                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 yb w3 h5">
               <div className="t m0 x0 h2 yc ff1 fs0 fc0 sc0 ls0 ws1">
-                3. Thông tin v<span className="_ _0"></span>ề người thuê vận tải <span className="_ _0"></span>
+                3. Thông tin về người thuê vận tải
                 <span className="ff2"> </span>
               </div>
-              <div className="t m0 x0 h3 yd ff3 fs0 fc0 sc0 ls0 ws1">
-                (Dành cho đơn vị k<span className="_ _0"></span>inh doanh vận tải hàn<span className="_ _0"></span>g hóa
-              </div>
+              <div className="t m0 x0 h3 yd ff3 fs0 fc0 sc0 ls0 ws1">(Dành cho đơn vị kinh doanh vận tải hàng hóa</div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1">kê khai)</div>
             </div>
             <div className="c x4 yb w4 h5">
               <div className="t m0 x0 h2 yc ff1 fs0 fc0 sc0 ls0 ws1">
-                4. Thông tin v<span className="_ _0"></span>ề hợp đồng vận tải<span className="_ _0"></span>
+                4. Thông tin về hợp đồng vận tải
                 <span className="ff2"> </span>
               </div>
               <div className="t m0 x0 h3 yd ff3 fs0 fc0 sc0 ls0 ws1">
-                (Dành cho đơn vị k<span className="_ _0"></span>inh doanh vận tải)<span className="_ _0"></span>
+                (Dành cho đơn vị kinh doanh vận tải)
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 ye w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tên người thuê <span className="_ _0"></span>vận chuyển: {state.tntvc ? state.tntvc : ''}
+                Tên người thuê vận chuyển: {state.tntvc ? state.tntvc : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ye w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
                 Số hợp đồng: {state.shd ? state.shd : ''}
-                <span className="_ _0"></span>
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -136,58 +129,57 @@ function Preview() {
             </div>
             <div className="c x4 yf w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Ngày… tháng… năm<span className="_ _0"></span>……<span className="ff4"> </span>
+                Ngày {state.ntn ? new Date(state.ntn).getDate() : '…'} tháng{' '}
+                {state.ntn ? new Date(state.ntn).getMonth() + 1 : '…'} năm
+                {state.ntn ? new Date(state.ntn).getFullYear() : '…'}
+                <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 y10 w3 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                5. Thông tin v<span className="_ _0"></span>ề chuyến đi <span className="ff2"> </span>
+                5. Thông tin về chuyến đi <span className="ff2"> </span>
               </div>
             </div>
             <div className="c x4 y10 w4 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                6. Thông tin v<span className="_ _0"></span>ề hàng hóa<span className="ff2"> </span>
+                6. Thông tin về hàng hóa<span className="ff2"> </span>
               </div>
             </div>
             <div className="c x3 y11 w3 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tuyến vận chuyển: <span className="_ _0"></span>
+                Tuyến vận chuyển: {state.tvc ? state.tvc : ''}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
             <div className="c x4 y11 w4 h7">
-              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">
-                Tên hàng hóa:<span className="_ _0"></span>
-              </div>
+              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">Tên hàng hóa: {state.thh ? state.thh : ''}</div>
             </div>
             <div className="c x3 y13 w3 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Điểm xếp hàng: <span className="_ _0"></span>
+                Điểm xếp hàng: {state.dph ? state.dph : ''}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
             <div className="c x4 y13 w4 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng hóa<span className="_ _0"></span>:<span className="ff4"> </span>
+                Khối lượng hàng hóa:
+                <span className="ff4"> {state.klhh ? state.klhh : ''}</span>
               </div>
             </div>
             <div className="c x3 y14 w3 h8">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Điểm giao hàng: <span className="_ _0"></span>
-                <span className="ff4"> </span>
+                Điểm giao hàng:<span className="ff4"> {state.dgh ? state.dgh : ''}</span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
             <div className="c x4 y14 w4 h8">
-              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">
-                Thông tin khác<span className="_ _0"></span>:
-              </div>
+              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">Thông tin khác: {state.ttk ? state.ttk : ''}</div>
             </div>
             <div className="c x3 y15 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Thời gian vận chu<span className="_ _0"></span>yển dự kiến:………. <span className="_ _0"></span>
+                Thời gian vận chuyển dự kiến: {state.tgvcdk ? state.tgvcdk : '………'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -196,10 +188,10 @@ function Preview() {
             </div>
             <div className="c x3 y16 w3 h9">
               <div className="t m0 x0 h3 y17 ff3 fs0 fc0 sc0 ls0 ws1">
-                Bắt đầu từ:………(gi<span className="_ _0"></span>ờ) <span className="ff4"> </span>
+                Bắt đầu từ: {state.bdt ? state.bdt : '………'} (giờ) <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws0">
-                đến………..(giờ)<span className="ff4 ws1"> </span>
+                đến {state.bdt ? state.bdt : '………'} (giờ)<span className="ff4 ws1"> </span>
               </div>
             </div>
             <div className="c x4 y16 w4 h9">
@@ -207,7 +199,7 @@ function Preview() {
             </div>
             <div className="c x3 y18 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tổng số km<span className="_ _0"></span> dự kiến:<span className="ff4"> </span>
+                Tổng số km dự kiến:<span className="ff4"> {state.tskm ? state.tskm : ''}</span>
               </div>
             </div>
             <div className="c x4 y18 w4 h4">
@@ -215,7 +207,7 @@ function Preview() {
             </div>
             <div className="c x3 y19 w3 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                7. Thông tin v<span className="_ _0"></span>ề rơ moóc, sơ mi rơ moóc<span className="_ _0"></span>
+                7. Thông tin về rơ moóc, sơ mi rơ moóc
                 <span className="ff2"> </span>
               </div>
             </div>
@@ -224,8 +216,8 @@ function Preview() {
             </div>
             <div className="c x3 y1a w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Biển số rơ m<span className="_ _0"></span>oóc, sơ mi rơ m<span className="_ _0"></span>oóc
-                <span className="ff4"></span>
+                Biển số rơ moóc, sơ mi rơ moóc:
+                <span className="ff4"> {state.bsrm ? state.bsrm : ''}</span>
               </div>
             </div>
             <div className="c x4 y1a w4 h4">
@@ -233,73 +225,57 @@ function Preview() {
             </div>
             <div className="c x3 y1b w5 h4">
               <div className="t m0 x0 h2 y6 ff1 fs0 fc0 sc0 ls0 ws1">
-                8. Phần dành cho ngư<span className="_ _0"></span>ời xếp, dỡ hàng hó<span className="_ _0"></span>a lên,
-                xuống
-                <span className="_ _0"></span> xe ghi<span className="_ _0"></span>
+                8. Phần dành cho người xếp, dỡ hàng hóa lên, xuống xe ghi
                 <span className="ff2"> </span>
               </div>
             </div>
             <div className="c x3 y1c w3 ha">
               <div className="t m0 x0 h2 y1d ff1 fs0 fc0 sc0 ls0 ws1">
-                Thông tin về xếp hàng<span className="_ _0"></span> lên xe<span className="_ _0"></span>
+                Thông tin về xếp hàng lên xe
                 <span className="ff2"> </span>
               </div>
               <div className="t m0 x0 h3 y1e ff4 fs0 fc0 sc0 ls0 ws1">
-                -
-                <span className="ff3">
-                  Xếp lần 1: Địa điểm<span className="_ _0"></span>:………………………<span className="_ _0"></span>
-                </span>
+                -<span className="ff3">Xếp lần 1: Địa điểm: {state.ddxl1 ? state.ddxl1 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y1f ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng:………<span className="_ _0"></span>….. thời gian:… <span className="_ _0"></span>
+                Khối lượng hàng: {state.klhl1 ? state.klhl1 : '…………'} thời gian: {state.tgl1 ? state.tgl1 : '…'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y20 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người<span className="_ _0"></span> xếp hàng: <span className="_ _0"></span>……………
+                Xác nhận của người xếp hàng: {state.xncnxh ? state.xncnxh : '……………'}
                 <span className="ff4"></span>
               </div>
               <div className="t m0 x0 h6 y21 ff4 fs0 fc0 sc0 ls0 ws1"></div>
               <div className="t m0 x0 h3 y22 ff4 fs0 fc0 sc0 ls0 ws1">
-                -
-                <span className="ff3">
-                  Xếp lần 2: Địa điểm<span className="_ _0"></span>:………………………<span className="_ _0"></span>
-                </span>
+                -<span className="ff3">Xếp lần 2: Địa điểm: {state.ddxl2 ? state.ddxl2 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng:………<span className="_ _0"></span>….. thời gian:……<span className="_ _0"></span>
+                Khối lượng hàng: {state.klhl2 ? state.klhl2 : '…………'} thời gian: {state.tgl2 ? state.tgl2 : '…'}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 y1c w4 ha">
               <div className="t m0 x0 h2 y1d ff1 fs0 fc0 sc0 ls0 ws1">
-                Thông tin về dỡ h<span className="_ _0"></span>àng xuống xe<span className="_ _0"></span>
+                Thông tin về dỡ hàng xuống xe
                 <span className="ff2"> </span>
               </div>
               <div className="t m0 x0 h3 y1e ff4 fs0 fc0 sc0 ls0 ws1">
-                -
-                <span className="ff3">
-                  Dỡ lần 1: Địa điểm<span className="_ _0"></span>:………………………. <span className="_ _0"></span>
-                </span>
+                -<span className="ff3">Dỡ lần 1: Địa điểm: {state.dddhl1 ? state.dddhl1 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y1f ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng:……… <span className="_ _0"></span>thời gian:………..<span className="_ _0"></span>
-                <span className="_ _0"></span>
+                Khối lượng hàng: {state.kldhl1 ? state.kldhl1 : '…………'} thời gian: {state.tgdhl1 ? state.tgdhl1 : '…'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y20 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người<span className="_ _0"></span> dỡ hàng: …………<span className="_ _0"></span>…..
-                <span className="_ _0"></span>
+                Xác nhận của người dỡ hàng: {state.xncndh ? state.xncndh : '……………'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y21 ff4 fs0 fc0 sc0 ls0 ws1"></div>
               <div className="t m0 x0 h3 y22 ff4 fs0 fc0 sc0 ls0 ws1">
-                -
-                <span className="ff3">
-                  Dỡ lần 2: Địa điểm<span className="_ _0"></span>:………………………. <span className="_ _0"></span>
-                </span>
+                -<span className="ff3">Dỡ lần 2: Địa điểm: {state.dddhl2 ? state.dddhl2 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng:……… <span className="_ _0"></span>thời gian:………<span className="_ _0"></span>
+                Khối lượng hàng: {state.kldhl2 ? state.kldhl2 : '…………'} thời gian: {state.tgdhl12 ? state.tgdhl2 : '…'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -315,14 +291,13 @@ function Preview() {
             />
             <div className="c x3 y5 w3 hb">
               <div className="t m0 x0 h3 y23 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người<span className="_ _0"></span> xếp hàng: ………<span className="_ _0"></span>……
+                Xác nhận của người xếp hàng: {state.xncnxh ? state.xncnxh : '……………'}
                 <span className="ff4"></span>
               </div>
             </div>
             <div className="c x4 y5 w4 hb">
               <div className="t m0 x0 h3 y23 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người<span className="_ _0"></span> dỡ hàng: …………<span className="_ _0"></span>…
-                <span className="_ _0"></span>
+                Xác nhận của người dỡ hàng: {state.xncndh ? state.xncndh : '……………'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y24 ff4 fs0 fc0 sc0 ls0 ws1"></div>
@@ -337,7 +312,7 @@ function Preview() {
             </div>
             <div className="c x6 y26 w7 hc">
               <div className="t m0 x7 hd y28 ff5 fs0 fc0 sc0 ls0 ws1">
-                …., ngày… tháng… n<span className="_ _0"></span>ăm……<span className="_ _0"></span>
+                ……………, ngày {new Date().getDate()} tháng {new Date().getMonth() + 1} năm {new Date().getFullYear()}
                 <span className="ff6"> </span>
               </div>
               <div className="t m0 x8 h2 y29 ff1 fs0 fc0 sc0 ls0 ws1">
@@ -351,11 +326,8 @@ function Preview() {
             </div>
             <div className="c x0 y1 w2 h0 ">
               <div className="t m0 x3 hd y2b ff5 fs0 fc0 sc0 ls0 ws1">
-                Ghi chú: Tùy theo yêu c<span className="_ _0"></span>ầu quản lý, Đơn vị vậ<span className="_ _0"></span>
-                n tải có thể bổ sung các<span className="_ _0"></span> thông tin <span className="_ _0"></span>
-                <span className="ff6">
-                  khác ngo<span className="_ _0"></span>ài các thông tin
-                </span>
+                Ghi chú: Tùy theo yêu cầu quản lý, Đơn vị vậ n tải có thể bổ sung các thông tin
+                <span className="ff6">khác ngoài các thông tin</span>
               </div>
               <div className="t m0 x3 hd y2c ff5 fs0 fc0 sc0 ls0 ws1">
                 đã nêu trên.<span className="ff6"> </span>
