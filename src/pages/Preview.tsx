@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 
@@ -7,8 +7,8 @@ function Preview() {
   const { idProfile } = useParams();
   const { state } = useLocation();
 
-  useEffect(() => {
-    if (idProfile === 'null' && Object.keys(state).length === 0) {
+  useLayoutEffect(() => {
+    if (Object.keys(state).length === 0 || state === null || state === undefined) {
       nav(-1);
     }
   }, [idProfile, state]);
@@ -17,7 +17,7 @@ function Preview() {
   };
   return (
     <Fragment>
-      <button className="bg-slate-500 z-[999] absolute top-0 left-0 button-print" onClick={handlePrint}>
+      <button className="button-30 z-[999] absolute top-[10px] left-[10px] button-print" onClick={handlePrint}>
         Pirnt
       </button>
       <div id="sidebar">
@@ -36,11 +36,11 @@ function Preview() {
                 GIẤY VẬN TẢI<span className="ff2"> </span>
               </div>
               <div className="t m0 x2 h3 y3 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số: {state.so ? state.so : ' '} Có giá trị đến &nbsp;
-                {state.timeout ? state.timeout : '………'}.<span className="ff4"> </span>
+                Số: {state && state.so ? state.so : ' '} Có giá trị đến &nbsp;
+                {state && state.timeout ? state.timeout : '………'}.<span className="ff4"> </span>
               </div>
               <div className="t m0 x3 h3 y4 ff3 fs0 fc0 sc0 ls0 ws1">
-                Biển kiểm soát xe: {state.bksx ? state.bksx : '……………………………'}
+                Biển kiểm soát xe: {state && state.bksx ? state.bksx : '……………………………'}
               </div>
             </div>
             <div className="c x3 y5 w3 h4">
@@ -57,37 +57,37 @@ function Preview() {
             </div>
             <div className="c x3 y7 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1 ">
-                Đơn vị vận tải: {state.dvvt ? state.dvvt : ''}
+                Đơn vị vận tải: {state && state.dvvt ? state.dvvt : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 y7 w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Họ tên lái xe: {state.htlx ? state.htlx : ''}
+                Họ tên lái xe: {state && state.htlx ? state.htlx : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 y9 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Địa chỉ: {state.dcdvvt ? state.dcdvvt : ''}
+                Địa chỉ: {state && state.dcdvvt ? state.dcdvvt : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 y9 w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Giấy phép lái xe số: {state.gplx ? state.gplx : ''}
+                Giấy phép lái xe số: {state && state.gplx ? state.gplx : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 ya w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số điện thoại liên hệ: {state.sdtdvvt ? state.sdtdvvt : ''}
+                Số điện thoại liên hệ: {state && state.sdtdvvt ? state.sdtdvvt : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ya w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số điện thoại liên hệ: {state.sdtlx ? state.sdtlx : ''}
+                Số điện thoại liên hệ: {state && state.sdtlx ? state.sdtlx : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -111,27 +111,27 @@ function Preview() {
             </div>
             <div className="c x3 ye w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tên người thuê vận chuyển: {state.tntvc ? state.tntvc : ''}
+                Tên người thuê vận chuyển: {state && state.tntvc ? state.tntvc : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 ye w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Số hợp đồng: {state.shd ? state.shd : ''}
+                Số hợp đồng: {state && state.shd ? state.shd : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x3 yf w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Địa chỉ: {state.dcntvc ? state.dcntvc : ''}
+                Địa chỉ: {state && state.dcntvc ? state.dcntvc : ''}
                 <span className="ff4"> </span>
               </div>
             </div>
             <div className="c x4 yf w4 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Ngày {state.ntn ? new Date(state.ntn).getDate() : '…'} tháng{' '}
-                {state.ntn ? new Date(state.ntn).getMonth() + 1 : '…'} năm
-                {state.ntn ? new Date(state.ntn).getFullYear() : '…'}
+                Ngày {state && state.ntn ? new Date(state.ntn).getDate() : '…'} tháng{' '}
+                {state && state.ntn ? new Date(state.ntn).getMonth() + 1 : '…'} năm
+                {state && state.ntn ? new Date(state.ntn).getFullYear() : '…'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -147,17 +147,19 @@ function Preview() {
             </div>
             <div className="c x3 y11 w3 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tuyến vận chuyển: {state.tvc ? state.tvc : ''}
+                Tuyến vận chuyển: {state && state.tvc ? state.tvc : ''}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
             <div className="c x4 y11 w4 h7">
-              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">Tên hàng hóa: {state.thh ? state.thh : ''}</div>
+              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">
+                Tên hàng hóa: {state && state.thh ? state.thh : ''}
+              </div>
             </div>
             <div className="c x3 y13 w3 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Điểm xếp hàng: {state.dph ? state.dph : ''}
+                Điểm xếp hàng: {state && state.dph ? state.dph : ''}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
@@ -165,21 +167,23 @@ function Preview() {
             <div className="c x4 y13 w4 h7">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
                 Khối lượng hàng hóa:
-                <span className="ff4"> {state.klhh ? state.klhh : ''}</span>
+                <span className="ff4"> {state && state.klhh ? state.klhh : ''}</span>
               </div>
             </div>
             <div className="c x3 y14 w3 h8">
               <div className="t m0 x0 h3 y12 ff3 fs0 fc0 sc0 ls0 ws1">
-                Điểm giao hàng:<span className="ff4"> {state.dgh ? state.dgh : ''}</span>
+                Điểm giao hàng:<span className="ff4"> {state && state.dgh ? state.dgh : ''}</span>
               </div>
               <div className="t m0 x0 h6 y8 ff4 fs0 fc0 sc0 ls0 ws1"></div>
             </div>
             <div className="c x4 y14 w4 h8">
-              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">Thông tin khác: {state.ttk ? state.ttk : ''}</div>
+              <div className="t m0 x0 h6 y12 ff4 fs0 fc0 sc0 ls0 ws1">
+                Thông tin khác: {state && state.ttk ? state.ttk : ''}
+              </div>
             </div>
             <div className="c x3 y15 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Thời gian vận chuyển dự kiến: {state.tgvcdk ? state.tgvcdk : '………'}
+                Thời gian vận chuyển dự kiến: {state && state.tgvcdk ? state.tgvcdk : '………'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -188,10 +192,10 @@ function Preview() {
             </div>
             <div className="c x3 y16 w3 h9">
               <div className="t m0 x0 h3 y17 ff3 fs0 fc0 sc0 ls0 ws1">
-                Bắt đầu từ: {state.bdt ? state.bdt : '………'} (giờ) <span className="ff4"> </span>
+                Bắt đầu từ: {state && state.bdt ? state.bdt : '………'} (giờ) <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws0">
-                đến {state.bdt ? state.bdt : '………'} (giờ)<span className="ff4 ws1"> </span>
+                đến {state && state.bdt ? state.bdt : '………'} (giờ)<span className="ff4 ws1"> </span>
               </div>
             </div>
             <div className="c x4 y16 w4 h9">
@@ -199,7 +203,7 @@ function Preview() {
             </div>
             <div className="c x3 y18 w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Tổng số km dự kiến:<span className="ff4"> {state.tskm ? state.tskm : ''}</span>
+                Tổng số km dự kiến:<span className="ff4"> {state && state.tskm ? state.tskm : ''}</span>
               </div>
             </div>
             <div className="c x4 y18 w4 h4">
@@ -217,7 +221,7 @@ function Preview() {
             <div className="c x3 y1a w3 h4">
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
                 Biển số rơ moóc, sơ mi rơ moóc:
-                <span className="ff4"> {state.bsrm ? state.bsrm : ''}</span>
+                <span className="ff4"> {state && state.bsrm ? state.bsrm : ''}</span>
               </div>
             </div>
             <div className="c x4 y1a w4 h4">
@@ -235,22 +239,24 @@ function Preview() {
                 <span className="ff2"> </span>
               </div>
               <div className="t m0 x0 h3 y1e ff4 fs0 fc0 sc0 ls0 ws1">
-                -<span className="ff3">Xếp lần 1: Địa điểm: {state.ddxl1 ? state.ddxl1 : '………………………'}</span>
+                -<span className="ff3">Xếp lần 1: Địa điểm: {state && state.ddxl1 ? state.ddxl1 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y1f ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng: {state.klhl1 ? state.klhl1 : '…………'} thời gian: {state.tgl1 ? state.tgl1 : '…'}
+                Khối lượng hàng: {state && state.klhl1 ? state.klhl1 : '…………'} thời gian:{' '}
+                {state && state.tgl1 ? state.tgl1 : '…'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y20 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người xếp hàng: {state.xncnxh ? state.xncnxh : '……………'}
+                Xác nhận của người xếp hàng: {state && state.xncnxh ? state.xncnxh : '……………'}
                 <span className="ff4"></span>
               </div>
               <div className="t m0 x0 h6 y21 ff4 fs0 fc0 sc0 ls0 ws1"></div>
               <div className="t m0 x0 h3 y22 ff4 fs0 fc0 sc0 ls0 ws1">
-                -<span className="ff3">Xếp lần 2: Địa điểm: {state.ddxl2 ? state.ddxl2 : '………………………'}</span>
+                -<span className="ff3">Xếp lần 2: Địa điểm: {state && state.ddxl2 ? state.ddxl2 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng: {state.klhl2 ? state.klhl2 : '…………'} thời gian: {state.tgl2 ? state.tgl2 : '…'}
+                Khối lượng hàng: {state && state.klhl2 ? state.klhl2 : '…………'} thời gian:{' '}
+                {state && state.tgl2 ? state.tgl2 : '…'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -260,22 +266,24 @@ function Preview() {
                 <span className="ff2"> </span>
               </div>
               <div className="t m0 x0 h3 y1e ff4 fs0 fc0 sc0 ls0 ws1">
-                -<span className="ff3">Dỡ lần 1: Địa điểm: {state.dddhl1 ? state.dddhl1 : '………………………'}</span>
+                -<span className="ff3">Dỡ lần 1: Địa điểm: {state && state.dddhl1 ? state.dddhl1 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y1f ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng: {state.kldhl1 ? state.kldhl1 : '…………'} thời gian: {state.tgdhl1 ? state.tgdhl1 : '…'}
+                Khối lượng hàng: {state && state.kldhl1 ? state.kldhl1 : '…………'} thời gian:{' '}
+                {state && state.tgdhl1 ? state.tgdhl1 : '…'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h3 y20 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người dỡ hàng: {state.xncndh ? state.xncndh : '……………'}
+                Xác nhận của người dỡ hàng: {state && state.xncndh ? state.xncndh : '……………'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y21 ff4 fs0 fc0 sc0 ls0 ws1"></div>
               <div className="t m0 x0 h3 y22 ff4 fs0 fc0 sc0 ls0 ws1">
-                -<span className="ff3">Dỡ lần 2: Địa điểm: {state.dddhl2 ? state.dddhl2 : '………………………'}</span>
+                -<span className="ff3">Dỡ lần 2: Địa điểm: {state && state.dddhl2 ? state.dddhl2 : '………………………'}</span>
               </div>
               <div className="t m0 x0 h3 y8 ff3 fs0 fc0 sc0 ls0 ws1">
-                Khối lượng hàng: {state.kldhl2 ? state.kldhl2 : '…………'} thời gian: {state.tgdhl12 ? state.tgdhl2 : '…'}
+                Khối lượng hàng: {state && state.kldhl2 ? state.kldhl2 : '…………'} thời gian:{' '}
+                {state && state.tgdhl12 ? state.tgdhl2 : '…'}
                 <span className="ff4"> </span>
               </div>
             </div>
@@ -291,13 +299,13 @@ function Preview() {
             />
             <div className="c x3 y5 w3 hb">
               <div className="t m0 x0 h3 y23 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người xếp hàng: {state.xncnxh ? state.xncnxh : '……………'}
+                Xác nhận của người xếp hàng: {state && state.xncnxh ? state.xncnxh : '……………'}
                 <span className="ff4"></span>
               </div>
             </div>
             <div className="c x4 y5 w4 hb">
               <div className="t m0 x0 h3 y23 ff3 fs0 fc0 sc0 ls0 ws1">
-                Xác nhận của người dỡ hàng: {state.xncndh ? state.xncndh : '……………'}
+                Xác nhận của người dỡ hàng: {state && state.xncndh ? state.xncndh : '……………'}
                 <span className="ff4"> </span>
               </div>
               <div className="t m0 x0 h6 y24 ff4 fs0 fc0 sc0 ls0 ws1"></div>
