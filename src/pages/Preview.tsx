@@ -1,6 +1,7 @@
 import { useLayoutEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
+import './css.css';
 
 function Preview() {
   const nav = useNavigate();
@@ -17,7 +18,7 @@ function Preview() {
   };
   return (
     <Fragment>
-      <button className="button-30 z-[999] absolute top-[10px] left-[10px] button-print" onClick={handlePrint}>
+      <button className="button-print button-30 z-[999] absolute top-[10px] left-[10px]" onClick={handlePrint}>
         Pirnt
       </button>
       <div id="sidebar">

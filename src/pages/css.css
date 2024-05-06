@@ -81,7 +81,7 @@
   }
   .d,
   .button-print {
-    display: none;
+    display: none !important;
   }
 }
 .pf {
