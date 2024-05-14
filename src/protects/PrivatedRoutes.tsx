@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import config from '~/configs';
 
 function PrivatedRoutes({ user, children }: PrivatedRoutesProps) {
-  return user.email !== import.meta.env.VITE_EMAIL_ADMIN ? <Navigate to={config.routes.home} /> : children;
+  return user.role !== 1 ? <Navigate to={config.routes.home} /> : children;
 }
 
 export default memo(PrivatedRoutes);

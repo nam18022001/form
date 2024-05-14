@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { Navigate } from 'react-router-dom';
 import config from '~/configs';
 
@@ -14,7 +14,11 @@ export const logout = async () => {
   <Navigate to={config.routes.home} />;
   localStorage.clear();
 };
-
+export const checkUser = async (uid: any) => {
+  const docUser = doc(db, 'users', uid);
+  const getDocUser = await getDoc(docUser);
+  return getDocUser.exists() ? getDocUser.data() : undefined;
+};
 export const addUser = async (currentUser: any) => {
   const userCollect = doc(db, 'users', currentUser.uid);
   const data = {
@@ -22,6 +26,7 @@ export const addUser = async (currentUser: any) => {
     displayName: currentUser.displayName,
     email: currentUser.email,
     photoURL: currentUser.photoURL,
+    role: 2,
   };
   try {
     await setDoc(userCollect, data);

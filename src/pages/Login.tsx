@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { googleIcon } from '~/assets/icons';
 import config from '~/configs';
-import { addUser, login } from '~/services/loginService';
+import { addUser, checkUser, login } from '~/services/loginService';
 
 function Login() {
   const nav = useNavigate();
@@ -10,7 +10,10 @@ function Login() {
   const handleLogin = async () => {
     try {
       await login().then(async (res) => {
-        await addUser(res.user);
+        const dataUser = await checkUser(res.user.uid);
+        if (dataUser === undefined) {
+          await addUser(res.user);
+        }
       });
       nav(config.routes.home);
     } catch (err) {

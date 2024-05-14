@@ -112,7 +112,7 @@ function Home() {
   };
   return (
     <Fragment>
-      {currentUser.email === import.meta.env.VITE_EMAIL_ADMIN && (
+      {currentUser.role === 1 && (
         <Link to={config.routes.list} className="button-24 absolute top-[10px] right-[10px]" role="button">
           Danh sách biểu mẫu
         </Link>

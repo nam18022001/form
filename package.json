@@ -13,6 +13,7 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "crypto-js": "^4.2.0",
     "firebase": "^10.11.1",
     "jquery": "^3.7.1",

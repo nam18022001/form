@@ -4,6 +4,8 @@ import App from './App.tsx';
 import './index.css';
 import AuthContextProvider from './contexts/AuthContextProvider.tsx';
 import LoadingContextProvider from './contexts/LoadingContextProvider.tsx';
+
+import 'tippy.js/dist/tippy.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
