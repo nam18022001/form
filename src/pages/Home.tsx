@@ -122,9 +122,13 @@ function Home() {
   };
   return (
     <Fragment>
-      {currentUser.role === 1 && (
+      {currentUser.role === 1 ? (
         <Link to={config.routes.list} className="button-24 absolute top-[10px] right-[10px]" role="button">
           Danh sách biểu mẫu
+        </Link>
+      ) : (
+        <Link to={config.routes.login} className="button-24 absolute top-[10px] right-[10px]" role="button">
+          Đăng nhập
         </Link>
       )}
       <div className="flex justify-center mt-[30px] text-4xl sm:text-2xl xs:text-lg font-bold text-[#6a64f1]">
@@ -186,9 +190,11 @@ function Home() {
               </div>
             </div> */}
             <div className="formbold-input-group">
-              <label className="formbold-form-label">Đơn vị vận tải</label>
+              <label className="formbold-form-label" htmlFor="dvvt">
+                Đơn vị vận tải
+              </label>
 
-              <select className="formbold-form-select" name="occupation" id="occupation" required>
+              <select className="formbold-form-select" name="dvvt" id="dvvt" required>
                 <option value="">-- Chọn đơn vị vận tải --</option>
                 {dataCompany.length > 0 &&
                   dataCompany.map((v) => {

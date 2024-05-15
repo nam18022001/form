@@ -14,7 +14,6 @@ function AuthContextProvider({ children }: AuthContextProfiverProps) {
     role: 2,
   });
   const [show, setShow] = useState(false);
-  console.log(currentUser);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {

@@ -1,6 +1,6 @@
 import Tippy from '@tippyjs/react';
 import TippyHeadless from '@tippyjs/react/headless';
-import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import { Fragment, useEffect, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 import { IoIosCloseCircleOutline, IoMdAddCircleOutline, IoMdClose, IoMdCloseCircleOutline } from 'react-icons/io';
@@ -62,7 +62,17 @@ function List() {
   }, [searchValueUserAdmin, userAdmin]);
 
   useEffect(() => {
-    const collectionForm = query(collection(db, 'forms'), orderBy('startDate', 'desc'));
+    let collectionForm;
+    if (currentUser.email === import.meta.env.VITE_EMAIL_ADMIN) {
+      collectionForm = query(collection(db, 'forms'), orderBy('startDate', 'desc'));
+    } else {
+      collectionForm = query(
+        collection(db, 'forms'),
+        where('dvvt', '==', currentUser.uid),
+        orderBy('startDate', 'desc'),
+      );
+    }
+
     onSnapshot(collectionForm, (data) => {
       if (!data.empty) {
         let form: formDataContent[] = [];
@@ -72,7 +82,7 @@ function List() {
         setDataForm(form);
       }
     });
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     if (searchValue !== '') {
@@ -190,9 +200,10 @@ function List() {
               <thead>
                 <tr>
                   <th scope="col">Số</th>
-                  <th scope="col">Tên người thuê</th>
+                  {currentUser.email !== import.meta.env.VITE_EMAIL_ADMIN && <th scope="col">Tên người thuê</th>}
                   <th scope="col">Địa chỉ người thuê</th>
                   <th scope="col">Số hợp đồng</th>
+                  {currentUser.email === import.meta.env.VITE_EMAIL_ADMIN && <th scope="col">Đơn vị vận tải</th>}
                   <th scope="col">Bắt đầu từ</th>
                   <th scope="col">Actions</th>
                 </tr>
@@ -200,13 +211,28 @@ function List() {
               <tbody>
                 {renderData.length > 0 &&
                   renderData.map((data: formDataContent, index) => (
-                    <tr key={index} className="border-b border-neutral-200 sm:flex sm:flex-col">
-                      <td data-label="Số" scope="row" className="font-medium">
+                    <tr key={index} className="border-b border-neutral-200 sm:flex sm:flex-col ">
+                      <td data-label="Số" scope="row" className="font-medium ">
                         {data.so}
                       </td>
-                      <td data-label="Tên người thuê">{data.tntvc}</td>
-                      <td data-label="Địa chỉ người thuê">{data.dcntvc}</td>
-                      <td data-label="Số hợp đồng">{data.shd}</td>
+                      {currentUser.email !== import.meta.env.VITE_EMAIL_ADMIN && (
+                        <td data-label="Tên người thuê" className="text-ellipsis overflow-hidden">
+                          {data.tntvc}
+                        </td>
+                      )}
+                      <td data-label="Địa chỉ người thuê" className="text-ellipsis overflow-hidden">
+                        {data.dcntvc}
+                      </td>
+                      <td data-label="Số hợp đồng" className="text-ellipsis overflow-hidden">
+                        {data.shd}
+                      </td>
+                      {currentUser.email === import.meta.env.VITE_EMAIL_ADMIN && (
+                        <td data-label="Đơn vị vận tải" className="text-ellipsis overflow-hidden">
+                          {userAdmin.filter((v) => v.uid === data.dvvt)[0]
+                            ? userAdmin.filter((v) => v.uid === data.dvvt)[0].nameCompany
+                            : 'Không có'}
+                        </td>
+                      )}
                       <td data-label="Bắt đầu từ">{new Date(data.startDate).toLocaleDateString()}</td>
                       <td data-label="Preview" className="flex gap-2">
                         <Link
@@ -324,13 +350,14 @@ function List() {
                           />
                         </div>
                         <div className="flex-1 flex flex-col px-[10px] overflow-hidden whitespace-nowrap ">
-                          <div className="overflow-hidden text-ellipsis font-medium sm:text-[14px]">
-                            {v.displayName}
+                          <div className="font-medium overflow-hidden text-ellipsis  sm:text-[14px]">
+                            {v.nameCompany}
                           </div>
+
                           <div className="overflow-hidden text-ellipsis text-[14px] sm:text-[13px]">{v.email}</div>
                         </div>
 
-                        <Tippy content="Xoá người này thành quản lý">
+                        <Tippy content="Xoá người này ra khỏi quản lý">
                           <button className="text-red-700 text-[30px]" onClick={() => deleteManager(v.uid, v.email)}>
                             <IoMdCloseCircleOutline />
                           </button>
