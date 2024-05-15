@@ -199,9 +199,11 @@ function Home() {
                 {dataCompany.length > 0 &&
                   dataCompany.map((v) => {
                     return (
-                      <option key={v.uid} value={v.uid}>
-                        {v.nameCompany}
-                      </option>
+                      v.email !== import.meta.env.VITE_EMAIL_ADMIN && (
+                        <option key={v.uid} value={v.uid}>
+                          {v.nameCompany}
+                        </option>
+                      )
                     );
                   })}
               </select>
