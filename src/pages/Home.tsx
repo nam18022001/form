@@ -1,5 +1,5 @@
-import { doc, getDoc } from 'firebase/firestore';
-import { Fragment } from 'react';
+import { collection, doc, getDoc, onSnapshot, query, where } from 'firebase/firestore';
+import { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import config from '~/configs';
 import { formDataContent } from '~/configs/const';
@@ -13,6 +13,16 @@ import './css.css';
 function Home() {
   const { currentUser } = useAuthContext();
   const { setLoading } = useLoadingContext();
+
+  const [dataCompany, setDataCompany] = useState<any[]>([]);
+
+  useEffect(() => {
+    onSnapshot(query(collection(db, 'users'), where('role', '==', 1)), (data) => {
+      let d: any[] = [];
+      data.forEach((v) => d.push(v.data()));
+      setDataCompany(d);
+    });
+  }, []);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -160,6 +170,7 @@ function Home() {
               </div>
             </div>
             <div className="font-semibold my-3">1. Thông tin về đơn vị kinh doanh</div>
+            {/* 
             <div className="formbold-input-wrapp formbold-mb-3">
               <label htmlFor="dvvt" className="formbold-form-label">
                 Đơn vị vận tải:
@@ -173,8 +184,22 @@ function Home() {
                   className="formbold-form-input sm:placeholder:text-[14px]"
                 />
               </div>
-            </div>
+            </div> */}
+            <div className="formbold-input-group">
+              <label className="formbold-form-label">Đơn vị vận tải</label>
 
+              <select className="formbold-form-select" name="occupation" id="occupation" required>
+                <option value="">-- Chọn đơn vị vận tải --</option>
+                {dataCompany.length > 0 &&
+                  dataCompany.map((v) => {
+                    return (
+                      <option key={v.uid} value={v.uid}>
+                        {v.nameCompany}
+                      </option>
+                    );
+                  })}
+              </select>
+            </div>
             <div className="formbold-mb-3">
               <label htmlFor="dcdvvt" className="formbold-form-label">
                 Địa chỉ:

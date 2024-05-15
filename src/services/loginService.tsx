@@ -26,6 +26,7 @@ export const addUser = async (currentUser: any) => {
     displayName: currentUser.displayName,
     email: currentUser.email,
     photoURL: currentUser.photoURL,
+    nameCompany: '',
     role: 2,
   };
   try {

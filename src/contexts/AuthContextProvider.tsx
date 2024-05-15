@@ -10,9 +10,11 @@ function AuthContextProvider({ children }: AuthContextProfiverProps) {
     displayName: '',
     email: '',
     photoURL: '',
+    nameCompany: '',
     role: 2,
   });
   const [show, setShow] = useState(false);
+  console.log(currentUser);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -24,10 +26,11 @@ function AuthContextProvider({ children }: AuthContextProfiverProps) {
           email: user.email,
           photoURL: user.photoURL,
           role: dataUser.role,
+          nameCompany: dataUser.nameCompany,
         });
         setShow(true);
       } else {
-        setCurrentUser({ uid: '', displayName: '', email: '', photoURL: '', role: 2 });
+        setCurrentUser({ uid: '', displayName: '', email: '', photoURL: '', nameCompany: '', role: 2 });
         setShow(true);
       }
     });
@@ -45,6 +48,8 @@ const AuthContext = createContext<AuthContextContent>({
     displayName: '',
     email: '',
     photoURL: '',
+    nameCompany: '',
+
     role: 2,
   },
   setCurrentUser: () => {},
@@ -59,6 +64,8 @@ type AuthContextContent = {
     displayName: string | null | '';
     email: string | null | '';
     photoURL: string | null | '';
+    nameCompany: string | null | '';
+
     role: number | null | 2;
   };
   setCurrentUser: Dispatch<SetStateAction<CurrentUserContents>>;
@@ -68,6 +75,7 @@ export interface CurrentUserContents {
   displayName: string | null | '';
   email: string | null | '';
   photoURL: string | null | '';
+  nameCompany: string | null | '';
   role: number | null;
 }
 export const useAuthContext = () => useContext(AuthContext);

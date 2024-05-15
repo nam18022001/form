@@ -98,19 +98,23 @@ function List() {
     }
   };
   const addManager = async (id: any) => {
-    setLoading(true);
-    const docUser = doc(db, 'users', id);
-    updateDoc(docUser, {
-      role: 1,
-    })
-      .then((_) => {
-        toastSuccess('Thêm thành công');
-        setLoading(false);
+    const nameCompany = prompt('Nhập tên công ty');
+    if (nameCompany !== null) {
+      setLoading(true);
+      const docUser = doc(db, 'users', id);
+      updateDoc(docUser, {
+        role: 1,
+        nameCompany,
       })
-      .catch((_) => {
-        toastError('Đã có lỗi xảy ra!');
-        setLoading(false);
-      });
+        .then((_) => {
+          toastSuccess('Thêm thành công');
+          setLoading(false);
+        })
+        .catch((_) => {
+          toastError('Đã có lỗi xảy ra!');
+          setLoading(false);
+        });
+    }
   };
   const deleteManager = async (id: any, email: any) => {
     if (confirm(`Xoá quản lý ${email}?`)) {
@@ -158,7 +162,10 @@ function List() {
           Đăng xuất
         </button>
       </div>
-      <div className="sm:text-[16px] mt-[80px] font-bold text-[#6a64f1] text-[25px] mb-[20px] text-ellipsis whitespace-nowrap overflow-hidden flex items-center justify-center ">
+      <div className="sm:text-[16px] mt-[80px] font-bold text-[#7469B6] text-[25px] mb-[10px] text-ellipsis whitespace-nowrap overflow-hidden flex items-center justify-center ">
+        Xin chào, {currentUser.nameCompany}
+      </div>
+      <div className="sm:text-[16px] mt-[10px] font-bold text-[#6a64f1] text-[25px] mb-[20px] text-ellipsis whitespace-nowrap overflow-hidden flex items-center justify-center ">
         Danh sách các biểu mẫu
       </div>
       <div className="w-full h-full flex flex-col items-center overflow-hidden">
@@ -285,14 +292,15 @@ function List() {
                       </div>
                     )}
                   >
-                    <div className="bg-[#577B8D] h-full w-1/2 rounded-lg sm:w-full bg-[#6b64f142] flex items-center px-[10px] text-white">
+                    <div className="bg-[#577B8D] h-full w-1/2 rounded-lg sm:w-full  flex items-center px-[10px] text-white">
                       <GoSearch className="text-[20px]" />
                       <input
-                        className="bg-transparent p-[10px] focus:outline-none w-full h-full"
+                        className="bg-transparent p-[10px] focus:outline-none w-full h-full placeholder:text-white"
                         placeholder="Tìm kiếm"
                         value={searchValueUserAdmin}
                         onFocus={() => setShowResult(true)}
                         onChange={(e) => setSearchValueUserAdmin(e.currentTarget.value)}
+                        autoFocus={false}
                       />
                       <IoIosCloseCircleOutline
                         className={`text-[20px] cursor-pointer ${searchValueUserAdmin.length > 0 ? 'visible' : 'invisible'}`}
